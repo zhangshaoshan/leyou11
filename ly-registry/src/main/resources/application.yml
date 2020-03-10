@@ -1,0 +1,11 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: ly-registry
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.103:10086/eureka
+    register-with-eureka: false #自己不注册到eureka服务列表上
+    fetch-registry: false #自己不拉取服务列表

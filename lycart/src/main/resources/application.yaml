@@ -1,0 +1,14 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: cart-service
+  redis:
+    host: 192.168.142.111
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.103:10086/eureka
+    instance:
+      prefer-ip-address: true
+      ip-address: 192.168.1.103

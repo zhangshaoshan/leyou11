@@ -1,0 +1,36 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: order-service
+  datasource:
+    #driver-class-name: com.mysql.jdbc.Driver  可以不写
+    url: jdbc:mysql://192.168.1.103:3306/leyou?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    #data-password: 123456   一定不要粗心写成这个鬼东西
+    password: 123456
+  jackson:
+    default-property-inclusion: non_null
+  redis:
+    host: 192.168.142.111
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.103:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.1.103
+mybatis:
+  type-aliases-package: com.leyou.pojo
+ly:
+  worker:
+    workerId: 1
+    dataCenterId: 1
+  pay:
+    appID: wx8397f8696b53817
+    mchID: 1473426802
+    key: T6m9ikn9g5v426MKfHQH7X8rKwb
+    httpConnectTimeoutMs: 1000
+    httpReadTimeoutMs: 8000
+    notifyUrl: http://www.leyou.com/

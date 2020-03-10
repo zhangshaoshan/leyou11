@@ -1,0 +1,37 @@
+server:
+  port: 10010
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.103:10086/eureka
+spring:
+  application:
+    name: ly-gateway
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000  #熔断超时时长5000ms
+ribbon:
+  ConnectionTimeout: 1000 #ribbon连接超时时长
+  ReadTimeout: 3500 #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务重试次数
+zuul:
+  #prefix: /api  #添加路由前缀  可以不写的
+  routes:
+    item-service: /item/**       #访问网关，网关监测到带有/item/  转发到 eureka item-service下
+    device-service: /device/**
+    scene-service: /scene/**
+    search-service: /search/**  #访问网关，搜索商品
+    user-service: /user/**
+    cart-service: /cart/**
+    order-service: /order/**
+    upload-service:
+      path: /upload/**
+      serviceId: upload-service
+      strip-prefix: false    #upload/**  中的upload不会被去除
+redis:
+  host: 192.168.142.111
