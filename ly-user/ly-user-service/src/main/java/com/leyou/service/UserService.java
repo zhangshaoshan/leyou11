@@ -139,6 +139,7 @@ public class UserService {
         }
         redisTemplate.opsForValue().set(tokenKey,token,30,TimeUnit.MINUTES);
         user.setToken(token);
+        log.info("【登录成功】");
         //返回user
         return user;
     }

@@ -1,6 +1,14 @@
+spring:
+  profiles:
+    active: dev
+    #将公共的配置放在主配置文件，不同环境的不同配置分别放在不同文件
+pagehelper:
+  reasonable: true  #传入的分页页数过大，返回最后一页，传入的分页为负数，返回第一页
+---
 server:
   port: 8081
 spring:
+  profiles: dev  #--- 下面就是dev环境的配置
   application:
     name: item-service
   datasource:
@@ -16,22 +24,57 @@ spring:
     virtual-host: /leyou
     template:
       retry:
-        enabled: true  #消息发送失败时是否重试
+        multiplier: 2  #重试一次失败后，重试周期会变成 10s * 2 ,,,再失败就变成 10s * 2 * 2.....重试周期会越来越长，
+        #受到max-interval  30s 影响，最多只会重试两次
+        enabled: true
         initial-interval: 10000ms   #消息发送失败后  等待10s再去重试
         max-interval: 30000ms   #最大的重试周期
-        multiplier: 2  #重试一次失败后，重试周期会变成 10s * 2 ,,,再失败就变成 10s * 2 * 2.....重试周期会越来越长，
-                        #受到max-interval  30s 影响，最多只会重试两次
       exchange: ly.item.exchange #交换机名称，如果发消息的时候不写交换机名称，默认使用这个
-    publisher-confirms: true   #生产者确认机制开启
+    publisher-confirms: true #生产者确认机制开启
 eureka:
   client:
     service-url:
       defaultZone: http://192.168.1.103:10086/eureka
-  instance:
-    prefer-ip-address: true
-    ip-address: 192.168.1.103
+    instance:
+      prefer-ip-address: true
+      ip-address: 192.168.1.103
 mybatis:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-pagehelper:
-  reasonable: true  #传入的分页页数过大，返回最后一页，传入的分页为负数，返回第一页
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #让mybatis输出sql语句
+---
+server:
+  port: 8089
+spring:
+  profiles: test  #--- 下面就是test环境的配置
+  application:
+    name: item-service
+  datasource:
+    #driver-class-name: com.mysql.jdbc.Driver  可以不写
+    url: jdbc:mysql://192.168.1.103:3306/leyou?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    #data-password: 123456   一定不要粗心写成这个鬼东西
+    password: 123456
+  rabbitmq:
+    host: 192.168.142.111
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template:
+      retry:
+        multiplier: 2  #重试一次失败后，重试周期会变成 10s * 2 ,,,再失败就变成 10s * 2 * 2.....重试周期会越来越长，
+        #受到max-interval  30s 影响，最多只会重试两次
+        enabled: true
+        initial-interval: 10000ms   #消息发送失败后  等待10s再去重试
+        max-interval: 30000ms   #最大的重试周期
+      exchange: ly.item.exchange #交换机名称，如果发消息的时候不写交换机名称，默认使用这个
+    publisher-confirms: true #生产者确认机制开启
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.103:10086/eureka
+    instance:
+      prefer-ip-address: true
+      ip-address: 192.168.1.103
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #让mybatis输出sql语句
