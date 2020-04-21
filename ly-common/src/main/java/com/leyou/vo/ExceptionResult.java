@@ -9,7 +9,7 @@ public class ExceptionResult {
     private String message;
     private long timestamp;
 
-    public ExceptionResult(ExceptionEnum exceptionEnum){
+    public ExceptionResult(ExceptionEnum exceptionEnum) {
         this.status = exceptionEnum.getCode();
         this.message = exceptionEnum.getMsg();
         this.timestamp = System.currentTimeMillis();

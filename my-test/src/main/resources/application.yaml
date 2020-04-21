@@ -1,0 +1,5 @@
+server:
+  port: 9083
+spring:
+  jackson:
+    default-property-inclusion: non_null

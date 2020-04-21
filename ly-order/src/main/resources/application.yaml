@@ -5,12 +5,12 @@ spring:
     name: order-service
   datasource:
     #driver-class-name: com.mysql.jdbc.Driver  可以不写
-    url: jdbc:mysql://192.168.1.103:3306/leyou?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    url: jdbc:mysql://192.168.1.103:3306/leyou?allowMultiQueries=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     #data-password: 123456   一定不要粗心写成这个鬼东西
     password: 123456
   jackson:
-    default-property-inclusion: non_null
+    default-property-inclusion: non_null   #如果某个字段为null就不返回给前端
   redis:
     host: 192.168.142.111
 eureka:

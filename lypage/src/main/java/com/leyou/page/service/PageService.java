@@ -6,7 +6,6 @@ import com.leyou.page.client.CategoryClient;
 import com.leyou.page.client.GoodsClient;
 import com.leyou.page.client.SpecificationClient;
 import com.leyou.pojo.Brand;
-import com.leyou.pojo.Category;
 import com.leyou.pojo.Sku;
 import com.leyou.pojo.Spu;
 import com.leyou.vo.ResponseModel;
@@ -18,7 +17,6 @@ import org.thymeleaf.context.Context;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +62,7 @@ public class PageService {
         context.setVariables(loadModel(spuId));
         //输出流
         File dest = new File("E:/idea/leyou/upload",spuId+".html");
-
+        //删除原有旧文件
         if (dest.exists()){
             dest.delete();
         }

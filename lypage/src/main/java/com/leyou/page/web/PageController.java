@@ -19,7 +19,7 @@ public class PageController {
 
 //    @GetMapping("/hello")
 //    public String toHello(Model model){
-//        model.addAttribute("msg","hello,thymeleaf!");
+//        model.addAttribute("msg","hello,thymeleaf!"fallback
 //        return "hello";//返回普通字符串，会結合前缀后缀去寻找视图
 //    }
 

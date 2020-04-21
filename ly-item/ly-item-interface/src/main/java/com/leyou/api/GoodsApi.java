@@ -13,20 +13,20 @@ import java.util.List;
 public interface GoodsApi {
     @GetMapping("spu/page")
     ResponseModel querySpuPage(
-            @RequestParam(value = "page",defaultValue = "1" ) Integer page,
-            @RequestParam(value = "rows",defaultValue = "5" ) Integer rows,
-            @RequestParam(value = "saleable",required = false) Boolean saleable,
-            @RequestParam(value = "key",required = false) String key
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "rows", defaultValue = "5") Integer rows,
+            @RequestParam(value = "saleable", required = false) Boolean saleable,
+            @RequestParam(value = "key", required = false) String key
     );
 
     @GetMapping("/spu/detail")
-    ResponseModel querySpuDetailBySpuId(@RequestParam(value = "spuId")Long spuId);
+    ResponseModel querySpuDetailBySpuId(@RequestParam(value = "spuId") Long spuId);
 
     @GetMapping("/spu/sku")
-    ResponseModel querySkuBySpuId(@RequestParam(value = "spuId")Long spuId);
+    ResponseModel querySkuBySpuId(@RequestParam(value = "spuId") Long spuId);
 
     @GetMapping("/spu/spuId")
-    ResponseModel querySpuBySpuId(@RequestParam(value = "spuId")Long spuId);
+    ResponseModel querySpuBySpuId(@RequestParam(value = "spuId") Long spuId);
 
     @GetMapping("/skuList")
     ResponseModel querySkuListBySkuIds(@RequestParam(value = "ids") List<Long> ids);

@@ -16,7 +16,7 @@ public class SearchRequest {
     }
 
     public Integer getPage() {
-        if(page == null){
+        if (page == null) {
             return DEFAULT_PAGE;
         }
         // 获取页码时做一些校验，不能小于1

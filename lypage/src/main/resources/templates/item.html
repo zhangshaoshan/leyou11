@@ -657,7 +657,7 @@
 
     let indexes = {};
 
-    Object.keys(specialSpec).forEach(key => {
+    Object.keys(specialSpec).forEach(key = > {
         indexes[key] = 0;
     })
 
@@ -684,19 +684,28 @@
                 num: 1
             },
             components: {
-                lyTop: () => import('/js/pages/top.js')
+                lyTop: () = > import('/js/pages/top.js')
         },
-        computed: {
-        sku() {
+        computed
+    :
+    {
+        sku()
+        {
             const index = Object.values(this.indexes).join("_");//[0,0,0]  0_0_0
-            return this.skus.find(s => s.indexes == index);
-        },
-        images() {
+            return this.skus.find(s = > s.indexes == index
+        )
+            ;
+        }
+    ,
+        images()
+        {
             return this.sku.images ? this.sku.images.split(",") : ['']
         }
-    },
+    }
+    ,
     methods: {
-        addCart() {
+        addCart()
+        {
             let cart = {
                 skuId: this.sku.id,
                 title: this.sku.title,
@@ -707,18 +716,22 @@
             };
 
             ly.http.get("auth/verify")
-                .then(resp => {
+                .then(resp = > {
                 //已经登录
 
                 ly.http.post("/cart/addCart", cart)
-                .then(resp => {
-                // 跳转  用来展示购物车的内容
-                window.location.href = "http://www.leyou.com/cart.html";
-        }).catch(resp => {
-                alert("添加失败");
+                    .then(resp = > {
+                    // 跳转  用来展示购物车的内容
+                    window.location.href = "http://www.leyou.com/cart.html";
+        }).
+            catch(resp = > {
+                alert("添加失败"
+        )
+            ;
         })
 
-        }).catch(resp => {
+        }).
+            catch(resp = > {
                 //未登录
                 /**
                  * 构造一个购物车的数据对象
@@ -727,7 +740,9 @@
                 //看一下本地localStorage有没有存过这个玩意，如果已经存过了，改数量
                 let localCarts = ly.store.get("carts") || [];
 
-            let storeCart = localCarts.find(ct => ct.skuId === cart.skuId);
+            let storeCart = localCarts.find(ct = > ct.skuId === cart.skuId
+        )
+            ;
 
             //本地已经有了就改值
             if (storeCart) {
@@ -744,7 +759,8 @@
         })
         }
     }
-    });
+    })
+    ;
 </script>
 
 <script type="text/javascript" src="/js/plugins/jquery/jquery.min.js"></script>

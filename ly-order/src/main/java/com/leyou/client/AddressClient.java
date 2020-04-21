@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class AddressClient {
 
-    public static final List<AddressDTO> addressList = new ArrayList<AddressDTO>(){
+    public static final List<AddressDTO> addressList = new ArrayList<AddressDTO>() {
         {
             AddressDTO address1 = new AddressDTO();
             address1.setId(1L);
@@ -35,9 +35,9 @@ public abstract class AddressClient {
         }
     };
 
-    public static AddressDTO findById(Long id){
-        for (AddressDTO addressDTO:addressList){
-            if (addressDTO.getId() == id){
+    public static AddressDTO findById(Long id) {
+        for (AddressDTO addressDTO : addressList) {
+            if (addressDTO.getId() == id) {
                 return addressDTO;
             }
         }
