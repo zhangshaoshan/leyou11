@@ -14,7 +14,7 @@ spring:
 
 ly:
   sms:
-    accessKeyId: LTAI4FcmnYyc1rBsn5LExrhx    #https://usercenter.console.aliyun.com/?spm=5176.12207334.0.0.57bd1cbeCyEAkk#/manage/ak
-    accessKeySecret: xteDuOeb7haXvep4AKeNnej1w2wHet
+    accessKeyId:     #https://usercenter.console.aliyun.com/?spm=5176.12207334.0.0.57bd1cbeCyEAkk#/manage/ak
+    accessKeySecret: 
     signName: 乐优商城  #签名模板  https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.products-grouped.ddysms.44f116d0Xmpmmn#/domestic/text/sign
     verifyCodeTemplate: SMS_183247204  #https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.products-grouped.ddysms.44f116d0Xmpmmn#/domestic/text/template
